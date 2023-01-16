@@ -14,6 +14,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Madonna {
 	
@@ -58,7 +60,9 @@ public class Madonna {
 		        js=(JavascriptExecutor)poModel.driver;
 		        js.executeScript("window,scrollBy(0,5000)","");
 		        //poModel.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-		        Thread.sleep(5000);
+		        //Thread.sleep(5000);
+			WebDriverWait waitFotIt = new WebDriverWait(driver, Duration.ofSeconds(60));
+        		waitFotIt.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//DIV//SPAN[@CLASS='ytp-ad-simple-ad-badge']")));
 		        //poModel.driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS);
 		    }	
 			try {
