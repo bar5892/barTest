@@ -2,6 +2,8 @@ package Madonna;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -44,10 +46,10 @@ public class Madonna {
 			boolean condition=true; 
 			while(condition) {
 				list = poModel.driver.findElements(By.xpath("//h3//a[@id='video-title']"));
-		        System.out.println("size list is : "+list.size());
+		        //System.out.println("size list is : "+list.size());
 		        for(int i = 0; i < list.size(); i++) {
 		        	if(list.get(i).getText().contains("Justify My Love")) {
-		        		System.out.println(list.get(i).getText());
+		        		//System.out.println(list.get(i).getText());
 		                list.get(i).click();
 		                condition=false;
 		                break;
@@ -55,14 +57,18 @@ public class Madonna {
 		        }
 		        js=(JavascriptExecutor)poModel.driver;
 		        js.executeScript("window,scrollBy(0,5000)","");
+		        //poModel.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 		        Thread.sleep(5000);
+		        //poModel.driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS);
 		    }	
 			try {
-				advertisement=poModel.driver.findElement(By.xpath("//DIV//SPAN[@CLASS='ytp-ad-simple-ad-badge']"));           
-				System.out.println("Test pass: There is an advertisement at the beginning of the clip");
+				advertisement=poModel.driver.findElement(By.xpath("//DIV//SPAN[@CLASS='ytp-ad-simple-ad-badge']")); 
+				if(advertisement.getAttribute("id").contains("simple-ad-badge:")) {
+					System.out.println("There is an advertisement at the beginning of the clip");
+				}
 		    }
 		    catch(Exception e) {
-		    	System.out.println("Test fail: There isn't an advertisement at the beginning of the clip");
+				System.out.println("There isn't an advertisement at the beginning of the clip");	
 		    }
 		}
 		catch(Exception e) {
