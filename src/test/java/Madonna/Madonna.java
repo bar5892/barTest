@@ -41,24 +41,24 @@ public class Madonna {
 			poModel.serachInPutBox.sendKeys("madonna");
 			poModel.serachButton.click();
 			List<WebElement> list;
-			boolean condishen = true; 
-			while (condishen){
+			boolean condition=true; 
+			while(condition) {
 				list = poModel.driver.findElements(By.xpath("//h3//a[@id='video-title']"));
 		        System.out.println("size list is : "+list.size());
-		        for (int i = 0; i < list.size(); i++) {
-		        	if (list.get(i).getText().contains("Justify My Love")){
+		        for(int i = 0; i < list.size(); i++) {
+		        	if(list.get(i).getText().contains("Justify My Love")) {
 		        		System.out.println(list.get(i).getText());
 		                list.get(i).click();
-		                condishen=false;
+		                condition=false;
 		                break;
 		            }
 		        }
-		        js = (JavascriptExecutor) poModel.driver;
+		        js=(JavascriptExecutor)poModel.driver;
 		        js.executeScript("window,scrollBy(0,5000)","");
 		        Thread.sleep(5000);
 		    }	
 			try {
-				advertisement = poModel.driver.findElement(By.xpath("//DIV//SPAN[@CLASS='ytp-ad-simple-ad-badge']"));           
+				advertisement=poModel.driver.findElement(By.xpath("//DIV//SPAN[@CLASS='ytp-ad-simple-ad-badge']"));           
 				System.out.println("Test pass: There is an advertisement at the beginning of the clip");
 		    }
 		    catch(Exception e) {
@@ -66,7 +66,7 @@ public class Madonna {
 		    }
 		}
 		catch(Exception e) {
-			System.out.println("Error test : " +e);
+			System.out.println("Error test :" +e);
 		}
 	}
 }
