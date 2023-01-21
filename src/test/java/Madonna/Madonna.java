@@ -63,11 +63,11 @@ public class Madonna {
 		   js=(JavascriptExecutor)poModel.driver;
 		   js.executeScript("window,scrollBy(0,5000)","");
 		   try {
-		   WebElement myDynamicElement = new WebDriverWait(poModel.driver,Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a//yt-formatted-string[contains(@aria-label,'Justify My Love')]")));
+			   WebElement myDynamicElement = new WebDriverWait(poModel.driver,Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a//yt-formatted-string[contains(@aria-label,'Justify My Love')]")));
 		   }
-			catch(Exception e) {
-				System.out.println(e);	
-			}
+		   catch(Exception e) {
+			   System.out.println(e);	
+		   }
 		}	
 		try {
 			// advertisement check
