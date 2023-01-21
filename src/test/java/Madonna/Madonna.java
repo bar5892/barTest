@@ -13,6 +13,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Madonna {
@@ -59,7 +62,12 @@ public class Madonna {
 		   // scrolling the result screen
 		   js=(JavascriptExecutor)poModel.driver;
 		   js.executeScript("window,scrollBy(0,5000)","");
-		   Thread.sleep(2000);
+		   try {
+		   WebElement myDynamicElement = new WebDriverWait(poModel.driver,Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a//yt-formatted-string[contains(@aria-label,'Justify My Love')]")));
+		   }
+			catch(Exception e) {
+				System.out.println(e);	
+			}
 		}	
 		try {
 			// advertisement check
